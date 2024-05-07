@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/AuthFragment">
+
+    <fragment
+        android:id="@+id/BlindingLights"
+        android:name="com.yandex.mobius360quest.BlindingLights"
+        android:label="4"
+        >
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/OriginFragment"
+            />
+        <action
+            android:id="@+id/leave_cycle"
+            app:destination="@+id/AnotherOne"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/Step"
+        android:name="com.yandex.mobius360quest.Step"
+        android:label="UserAgreement"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/ResetFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/OriginFragment"
+        android:name="com.yandex.mobius360quest.OriginFragment"
+        android:label="3"
+        >
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/BlindingLights"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HelloFragment"
+        android:name="com.yandex.mobius360quest.HelloFragment"
+        android:label="1">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/RotateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AnotherOne"
+        android:name="com.yandex.mobius360quest.AnotherOne"
+        android:label="oncreate">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/ComposeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AuthFragment"
+        android:name="com.yandex.mobius360quest.Auth"
+        android:label="Auth">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/Step" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ResetFragment"
+        android:name="com.yandex.mobius360quest.Mail"
+        android:label="Reset password">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/AnotherOne" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ComposeFragment"
+        android:name="com.yandex.mobius360quest.Compose"
+        android:label="robot?">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/HelloFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RotateFragment"
+        android:name="com.yandex.mobius360quest.Rotate"
+        android:label="rotate">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/AnimationFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/AnimationFragment"
+        android:name="com.yandex.mobius360quest.Animation"
+        android:label="Animation"/>
+
+</navigation>
