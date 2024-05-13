@@ -56,7 +56,7 @@ class Compose : Fragment() {
     @Composable
     fun RestoreScreen(modifier: Modifier = Modifier) {
         val enabled1 = remember { mutableStateOf(false) }
-        val enabled2 = remember { mutableStateOf(true) }
+        val enabled2 = remember { mutableStateOf(false) }
 
         Column(modifier = modifier) {
             Box(Modifier.weight(0.1f)) {
@@ -64,7 +64,7 @@ class Compose : Fragment() {
                     modifier = Modifier
                         .fillMaxHeight()
                         .background(color = Red)
-                        .clickable(enabled = !enabled2.value) {
+                        .clickable(enabled = enabled2.value) {
                             Log.e("CLICK", "CLICK1")
                             enabled1.value = !enabled1.value
                         }
