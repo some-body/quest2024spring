@@ -50,7 +50,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/RotateFragment" />
+            app:destination="@id/WithHandlerFragment" />
     </fragment>
 
     <fragment
@@ -100,12 +100,42 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/AnimationFragment"/>
+            app:destination="@id/WithHandlerFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/AnimationFragment"
         android:name="com.yandex.mobius360quest.Animation"
         android:label="Animation"/>
+
+    <fragment
+        android:id="@+id/WithHandlerFragment"
+        android:name="com.yandex.mobius360quest.WithHandlerFragment"
+        android:label="Fragment with handler">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/WithTouchFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/WithTouchFragment"
+        android:name="com.yandex.mobius360quest.WithTouchFragment"
+        android:label="Fragment with touch">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/WithThreadFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/WithThreadFragment"
+        android:name="com.yandex.mobius360quest.WithThreadFragment"
+        android:label="Fragment with thread">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/AnimationFragment"/>
+    </fragment>
 
 </navigation>
