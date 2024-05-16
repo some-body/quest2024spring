@@ -135,12 +135,17 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/AnimationFragment"/>
+            app:destination="@id/SomeAnotherCheckFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/SomeAnotherCheckFragment"
         android:name="com.yandex.mobius360quest.SomeAnotherCheck"
-        android:label="ServerCheck" />
+        android:label="ServerCheck">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/AnimationFragment"/>
+    </fragment>
 
 </navigation>

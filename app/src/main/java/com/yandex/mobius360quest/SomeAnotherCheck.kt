@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import androidx.core.view.isVisible
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.fragment.findNavController
 import com.yandex.mobius360quest.databinding.SomeAnotherCheckFragmentBinding
 import com.yandex.mobius360quest.to_hide.BaseViewBindingFragment
 import kotlinx.coroutines.CoroutineScope
@@ -44,7 +45,9 @@ class SomeAnotherCheck : BaseViewBindingFragment<SomeAnotherCheckFragmentBinding
     }
 
     private fun onNextClicked() {
-        performServerCheck(BusRequest(Calendar.getInstance().timeInMillis.toInt(), tapCount, selectedItems.map { it.toInt() }))
+        if (performServerCheck(BusRequest(Calendar.getInstance().timeInMillis.toInt(), tapCount, selectedItems.map { it.toInt() }))) {
+            findNavController().navigate(R.id.step_to_next)
+        }
     }
 
     private fun performServerCheck(request: BusRequest): Boolean {
