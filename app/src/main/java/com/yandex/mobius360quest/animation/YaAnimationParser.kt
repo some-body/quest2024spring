@@ -49,7 +49,7 @@ object YaAnimationParser {
                                 destX = animLine[1].toFloat(),
                                 destY = animLine[2].toFloat(),
                                 duration = animLine[3].toInt(),
-                                cycle = animLine.getOrNull(4) == "cycle"
+                                cycle = animLine[4] == "cycle "
                             )
                         }
 
@@ -57,7 +57,7 @@ object YaAnimationParser {
                             Rotate(
                                 angle = animLine[1].toFloat(),
                                 duration = animLine[2].toInt(),
-                                cycle = animLine.getOrNull(3) == "cycle"
+                                cycle = animLine[3] == "cycle "
                             )
                         }
 
@@ -65,7 +65,7 @@ object YaAnimationParser {
                             Scale(
                                 destScale = animLine[1].toFloat(),
                                 duration = animLine[2].toInt(),
-                                cycle = animLine.getOrNull(3) == "cycle"
+                                cycle = animLine[3] == "cycle "
                             )
                         }
 

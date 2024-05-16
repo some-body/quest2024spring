@@ -19,10 +19,8 @@ class YaAnimationView @JvmOverloads constructor(
         yaAnimationDrawable?.callback = null
 
         yaAnimationDrawable = YaAnimationDrawable.inflate(context, filename).apply {
-            callback = this@YaAnimationView
             start()
         }
-        requestLayout()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -36,9 +34,5 @@ class YaAnimationView @JvmOverloads constructor(
         super.onDraw(canvas)
         yaAnimationDrawable?.setBounds(0, 0, width, height)
         yaAnimationDrawable?.draw(canvas)
-    }
-
-    override fun verifyDrawable(who: Drawable): Boolean {
-        return super.verifyDrawable(who) || yaAnimationDrawable == who
     }
 }
