@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string translatable="false" name="server_answer">{"id":13371338,"innerResponse":{"answer_to_check":"access_granted"}}</string>
+</resources>
