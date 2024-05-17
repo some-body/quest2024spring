@@ -80,4 +80,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.\n\n\n\n\n\n
     </string>
     <string name="rotate_passcode_template">Для подтверждения введите: %s</string>
+    <string name="text_creds">Credentials are somewhere in the project</string>
+    <string name="text_error">Error</string>
+    <string name="text_weak_pass">Password is too weak! Reset it please!</string>
 </resources>

@@ -71,7 +71,16 @@
         <action
             android:id="@+id/step_to_next"
             app:destination="@id/LockedFragment" />
+
+        <action
+            android:id="@+id/win"
+            app:destination="@id/WinFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/WinFragment"
+        android:name="com.yandex.mobius360quest.WinFragment"
+        android:label="Ura ura pobeda daaa dada uraa"/>
 
     <fragment
         android:id="@+id/ResetFragment"

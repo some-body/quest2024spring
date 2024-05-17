@@ -5,6 +5,8 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.yandex.mobius360quest.databinding.AuthFragmentBinding
+import com.yandex.mobius360quest.to_hide.AuthResponse
+import com.yandex.mobius360quest.to_hide.AuthServer
 import com.yandex.mobius360quest.to_hide.BaseViewBindingFragment
 
 class Auth : BaseViewBindingFragment<AuthFragmentBinding>(AuthFragmentBinding::inflate) {
@@ -25,10 +27,19 @@ class Auth : BaseViewBindingFragment<AuthFragmentBinding>(AuthFragmentBinding::i
         }
     }
 
-    // NAIDI LOGIN+PASS V KODE AHAHAHAHAH
     private fun login(login: String, password: String) {
-        // add login+password check
-        binding.inputLoginLayout.error = " "
-        binding.inputPasswordLayout.error = "failed"
+        when (AuthServer.authorize(requireContext(), login, password)) {
+            AuthResponse.WRONG -> {
+                binding.inputLoginLayout.error = getString(R.string.text_error)
+                binding.inputPasswordLayout.error = getString(R.string.text_creds)
+            }
+            AuthResponse.WEAK_PASS -> {
+                binding.inputLoginLayout.error = getString(R.string.text_error)
+                binding.inputPasswordLayout.error = getString(R.string.text_weak_pass)
+            }
+            AuthResponse.SUCCESS -> {
+                findNavController().navigate(R.id.win)
+            }
+        }
     }
 }
