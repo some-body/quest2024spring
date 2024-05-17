@@ -83,4 +83,6 @@
     <string name="text_creds">Credentials are somewhere in the project</string>
     <string name="text_error">Error</string>
     <string name="text_weak_pass">Password is too weak! Reset it please!</string>
+    <string name="text_wrong_email">Email check failed</string>
+    <string name="text_email_not_found">Email not found!</string>
 </resources>

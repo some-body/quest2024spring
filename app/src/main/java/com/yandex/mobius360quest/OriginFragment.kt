@@ -14,7 +14,6 @@ class OriginFragment : BaseViewBindingFragment<OrdinaryDaysBinding>(OrdinaryDays
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.step_to_next)
         }
-        binding.button.isEnabled = true
     }
 
 }
