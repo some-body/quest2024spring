@@ -70,14 +70,12 @@ class YaAnimationDrawable(private val yaAnimation: YaAnimation) : Drawable(), An
     override fun draw(canvas: Canvas) {
         yaAnimation.shapes.forEach { shape ->
             paint.color = shape.color
-            val saveCount = canvas.save()
             canvas.rotate(shape.angle, shape.centerX, shape.centerY)
             canvas.scale(shape.scale, shape.scale, shape.centerX, shape.centerY)
             when (shape) {
                 is Rectangle -> canvas.drawRect(shape, paint)
                 is Circle -> canvas.drawCircle(shape, paint, strokePaint)
             }
-            canvas.restoreToCount(saveCount)
         }
     }
 
