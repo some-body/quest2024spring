@@ -1,6 +1,8 @@
 package com.yandex.mobius360quest
 
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
@@ -8,6 +10,7 @@ import com.yandex.mobius360quest.databinding.AuthFragmentBinding
 import com.yandex.mobius360quest.to_hide.AuthResponse
 import com.yandex.mobius360quest.to_hide.AuthServer
 import com.yandex.mobius360quest.to_hide.BaseViewBindingFragment
+import java.nio.charset.Charset
 
 class Auth : BaseViewBindingFragment<AuthFragmentBinding>(AuthFragmentBinding::inflate) {
 
@@ -28,7 +31,7 @@ class Auth : BaseViewBindingFragment<AuthFragmentBinding>(AuthFragmentBinding::i
     }
 
     private fun login(login: String, password: String) {
-        when (AuthServer.authorize(requireContext(), login, password)) {
+        when (AuthServer.authorize(login, password)) {
             AuthResponse.WRONG -> {
                 binding.inputLoginLayout.error = getString(R.string.text_error)
                 binding.inputPasswordLayout.error = getString(R.string.text_creds)

@@ -1,29 +1,35 @@
 package com.yandex.mobius360quest.to_hide
 
-import android.content.Context
-import com.yandex.mobius360quest.R
+import android.util.Base64
+import java.nio.charset.Charset
 
 // can not edit server code
 // and can not see either
 object AuthServer {
+    private const val login = "bXJ5YW5kZXhvaWQzMjI=\n"
+    private const val password1 = "MTIzNDU2Nzg5MA==\n"
+    private const val password2 = "eW91IGFyZSBhd2Vzb21l\n"
 
-    fun authorize(context: Context, login: String, password: String): AuthResponse =
-        if (checkLogin(context, login)) {
-            checkPassword(context, password)
+    fun authorize(login: String, password: String): AuthResponse =
+        if (checkLogin(login)) {
+            checkPassword(password)
         } else {
             AuthResponse.WRONG
         }
 
-    private fun checkLogin(context: Context, login: String): Boolean {
-        return context.getString(R.string.log_cred_name) == login
+    private fun checkLogin(login: String): Boolean {
+        return encrypt(login) == this.login
     }
 
-    private fun checkPassword(context: Context, password: String): AuthResponse =
-        when (password) {
-            context.getString(R.string.log_cred_pass) -> AuthResponse.WEAK_PASS
-            "PAROLB" -> AuthResponse.SUCCESS
+    private fun checkPassword(password: String): AuthResponse =
+        when (encrypt(password)) {
+            password1 -> AuthResponse.WEAK_PASS
+            password2 -> AuthResponse.SUCCESS
             else -> AuthResponse.WRONG
         }
+
+    private fun encrypt(string: String): String =
+        Base64.encodeToString(string.toByteArray(Charset.defaultCharset()), Base64.DEFAULT)
 }
 
 enum class AuthResponse {
