@@ -18,12 +18,8 @@ class Locked : BaseViewBindingFragment<LockpuzzleBinding>(LockpuzzleBinding::inf
         }
         binding.slider.labelBehavior = LabelFormatter.LABEL_GONE
         binding.slider.addOnChangeListener { _, value, fromUser ->
-//            binding.target.x = value * 10
-//            checkHit(false)
-            // fix #3
-            binding.target.x = value
-            checkHit(true)
-            // ----------
+            binding.target.x = value * 10
+            checkHit(false)
         }
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.step_to_next)
@@ -33,13 +29,8 @@ class Locked : BaseViewBindingFragment<LockpuzzleBinding>(LockpuzzleBinding::inf
     fun checkHit(fromUser: Boolean) {
         val centerX = binding.target.x + binding.target.width / 2
         val centerY = binding.target.y + binding.target.height / 2
-//        val hitX = centerX in binding.placeholder.x..(binding.placeholder.y + binding.placeholder.width)
-//        val hitY = centerY in binding.placeholder.y..(binding.placeholder.y + binding.placeholder.height)
-//        binding.button.isEnabled = fromUser && hitX && hitY
-        // fix #3
-        val hitX = centerX in binding.placeholder.x..(binding.placeholder.x + binding.placeholder.width)
-        binding.button.isEnabled = fromUser && hitX
-        // --------
+        val hitX = centerX in binding.placeholder.x..(binding.placeholder.y + binding.placeholder.width)
+        val hitY = centerY in binding.placeholder.y..(binding.placeholder.y + binding.placeholder.height)
+        binding.button.isEnabled = fromUser && hitX && hitY
     }
-
 }

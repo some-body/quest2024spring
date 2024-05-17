@@ -82,7 +82,7 @@ class Compose : BaseComposeFragment() {
             ) {
                 Button(
                     onClick = { findNavController().navigate(R.id.step_to_next) },
-                    enabled = true // enabled1.value && enabled2.value
+                    enabled = enabled1.value && enabled2.value
                 ) {
                     Text("Дальше")
                 }

@@ -13,10 +13,7 @@ class Mail : BaseViewBindingFragment<EmailFragmentBinding>(EmailFragmentBinding:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.resetPassword.setOnClickListener {
-//            checkEmail(binding.inputEmail.toString())
-            // fix #4
-            checkEmail(binding.inputEmail.text.toString())
-            // ------
+            checkEmail(binding.inputEmail.toString())
         }
         binding.inputEmail.doOnTextChanged { _, _, _, _ ->
             binding.inputEmailLayout.error = null
@@ -24,10 +21,7 @@ class Mail : BaseViewBindingFragment<EmailFragmentBinding>(EmailFragmentBinding:
     }
 
     private fun checkEmail(email: String) {
-//        val ok = Regex("""^[\w-\.]+@([\w-]+-\.)+[\w-]{2,4}${'$'}""").matches(email)
-        // fix #4
-        val ok = Regex("""^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}${'$'}""").matches(email)
-        // ------
+        val ok = Regex("""^[\w-\.]+@([\w-]+-\.)+[\w-]{2,4}${'$'}""").matches(email)
         if (ok && AuthServer.checkEmail(email)) {
             findNavController().navigate(R.id.step_to_next)
         } else {

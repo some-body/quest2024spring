@@ -17,10 +17,7 @@ class Auth : BaseViewBindingFragment<AuthFragmentBinding>(AuthFragmentBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.auth.setOnClickListener {
-//            login(binding.inputLogin.toString(), binding.inputPassword.toString())
-            // fix #1
-            login(binding.inputLogin.text.toString(), binding.inputPassword.text.toString())
-            // ---------
+            login(binding.inputLogin.toString(), binding.inputPassword.toString())
         }
         val removeError = { _: CharSequence?, _: Int, _: Int, _: Int ->
             binding.inputLoginLayout.error = null

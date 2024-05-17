@@ -21,44 +21,23 @@ class AnotherOne : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        _binding = OrdinaryDaysBinding.inflate(inflater, container, true)
-        // fix #5
-        _binding = OrdinaryDaysBinding.inflate(inflater, container, false)
-        // ------
+        _binding = OrdinaryDaysBinding.inflate(inflater, container, true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.button.setOnClickListener {
-//            Thread {
-//                binding.loader.isVisible = true
-//                Thread.sleep(2000) // important background work !!!
-//                binding.loader.isVisible = false
-//                Handler(Looper.getMainLooper()) {
-//                    findNavController().navigate(R.id.step_to_next)
-//                    false
-//                }.post{}
-//            }.run()
-//        }
-        // fix #5
         binding.button.setOnClickListener {
             Thread {
-                requireActivity().runOnUiThread {
-                    binding.loader.isVisible = true
-                }
+                binding.loader.isVisible = true
                 Thread.sleep(2000) // important background work !!!
-                requireActivity().runOnUiThread {
-                    binding.loader.isVisible = false
-                }
+                binding.loader.isVisible = false
                 Handler(Looper.getMainLooper()) {
-                    false
-                }.post{
                     findNavController().navigate(R.id.step_to_next)
-                }
-            }.start()
+                    false
+                }.post{}
+            }.run()
         }
-        // ------
     }
 
     override fun onDestroyView() {
