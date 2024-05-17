@@ -70,7 +70,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/Step" />
+            app:destination="@id/LockedFragment" />
     </fragment>
 
     <fragment
@@ -100,7 +100,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/WithHandlerFragment"/>
+            app:destination="@id/AnimationFragment"/>
     </fragment>
 
     <fragment
@@ -145,7 +145,17 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/AnimationFragment"/>
+            app:destination="@id/RotateFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/LockedFragment"
+        android:name="com.yandex.mobius360quest.Locked"
+        android:label="Unlock me!">
+
+        <action
+            android:id="@+id/step_to_next"
+            app:destination="@id/Step"/>
     </fragment>
 
 </navigation>

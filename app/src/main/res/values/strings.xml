@@ -79,4 +79,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.\n\n\n\n\n\n
     </string>
+    <string name="rotate_passcode_template">Для подтверждения введите: %s</string>
 </resources>
