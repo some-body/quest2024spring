@@ -28,7 +28,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/ResetFragment" />
+            app:destination="@id/LockedFragment" />
     </fragment>
 
     <fragment
@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/HelloFragment"
         android:name="com.yandex.mobius360quest.HelloFragment"
-        android:label="1">
+        android:label="Ok, just press this button">
 
         <action
             android:id="@+id/step_to_next"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/AnotherOne"
         android:name="com.yandex.mobius360quest.AnotherOne"
-        android:label="oncreate">
+        android:label="Crashed?:)">
 
         <action
             android:id="@+id/step_to_next"
@@ -70,7 +70,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/LockedFragment" />
+            app:destination="@id/Step" />
 
         <action
             android:id="@+id/win"
@@ -105,7 +105,7 @@
     <fragment
         android:id="@+id/RotateFragment"
         android:name="com.yandex.mobius360quest.Rotate"
-        android:label="rotate">
+        android:label="Passcode">
 
         <action
             android:id="@+id/step_to_next"
@@ -124,7 +124,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/WithTouchFragment"/>
+            app:destination="@id/SomeAnotherCheckFragment"/>
     </fragment>
 
     <fragment
@@ -164,7 +164,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/Step"/>
+            app:destination="@id/ResetFragment"/>
     </fragment>
 
 </navigation>

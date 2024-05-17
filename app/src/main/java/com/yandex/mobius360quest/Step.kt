@@ -24,13 +24,12 @@ class Step : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // fix #2
         binding.textviewSecond.isClickable = false
+        // ---------
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.step_to_next)
         }
-        binding.buttonSecond.isClickable = true
-        binding.buttonSecond.isEnabled = true
-        binding.buttonSecond.isFocusable = true
     }
 
     override fun onDestroyView() {

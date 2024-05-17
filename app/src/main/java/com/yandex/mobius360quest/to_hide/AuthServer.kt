@@ -7,6 +7,7 @@ import java.nio.charset.Charset
 // and can not see either
 object AuthServer {
     private const val login = "bXJ5YW5kZXhvaWQzMjI=\n"
+    private const val email = "bWVtQHlhLnJ1\n"
     private const val password1 = "MTIzNDU2Nzg5MA==\n"
     private const val password2 = "eW91IGFyZSBhd2Vzb21l\n"
 
@@ -27,6 +28,10 @@ object AuthServer {
             password2 -> AuthResponse.SUCCESS
             else -> AuthResponse.WRONG
         }
+
+    fun checkEmail(email: String): Boolean {
+        return encrypt(email) == this.email
+    }
 
     private fun encrypt(string: String): String =
         Base64.encodeToString(string.toByteArray(Charset.defaultCharset()), Base64.DEFAULT)

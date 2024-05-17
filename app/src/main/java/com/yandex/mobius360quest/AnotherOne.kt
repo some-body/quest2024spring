@@ -19,7 +19,9 @@ class AnotherOne : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 //        _binding = OrdinaryDaysBinding.inflate(inflater, container, true)
+        // fix #5
         _binding = OrdinaryDaysBinding.inflate(inflater, container, false)
+        // ------
         return binding.root
     }
 
