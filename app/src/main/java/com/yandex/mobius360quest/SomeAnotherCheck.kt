@@ -38,11 +38,11 @@ class SomeAnotherCheck : BaseViewBindingFragment<SomeAnotherCheckFragmentBinding
             choiceMode = ListView.CHOICE_MODE_MULTIPLE
             numColumns = 3
             onItemClickListener = this@SomeAnotherCheck
-
         }
         binding.button.setOnClickListener {
             onNextClicked()
         }
+        makeCheck()
     }
 
     private fun onNextClicked() {
@@ -68,18 +68,23 @@ class SomeAnotherCheck : BaseViewBindingFragment<SomeAnotherCheckFragmentBinding
 
     }
 
-    //Это валидно, править нельзя
+    // Это валидно, править нельзя
     private fun BusWrappedResponse.isServerAccessGranted() = innerResponse.correct == BusCheckResult.ACCESS_GRANTED
+
+    // и это тоже)
+    private fun makeCheck() {
+        binding.button.isVisible = true //selectedItems.isNotEmpty()
+    }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         toggleSelection()
+        makeCheck()
     }
 
     private val selectedItems = mutableListOf<Long>()
     private var tapCount = 0
     private fun toggleSelection(position: Long = -1) {
         selectedItems.add(position)
-        binding.button.isVisible = selectedItems.isNotEmpty()
     }
 
     private fun getImages() =

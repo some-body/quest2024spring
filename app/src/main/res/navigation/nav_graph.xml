@@ -50,7 +50,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/WithHandlerFragment" />
+            app:destination="@id/SomeAnotherCheckFragment" />
     </fragment>
 
     <fragment
@@ -124,7 +124,7 @@
 
         <action
             android:id="@+id/step_to_next"
-            app:destination="@id/SomeAnotherCheckFragment"/>
+            app:destination="@id/WithTouchFragment"/>
     </fragment>
 
     <fragment

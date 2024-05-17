@@ -1,9 +1,12 @@
 package com.yandex.mobius360quest
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.yandex.mobius360quest.databinding.OrdinaryDaysBinding
@@ -27,9 +30,35 @@ class AnotherOne : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        binding.button.setOnClickListener {
+//            Thread {
+//                binding.loader.isVisible = true
+//                Thread.sleep(2000) // important background work !!!
+//                binding.loader.isVisible = false
+//                Handler(Looper.getMainLooper()) {
+//                    findNavController().navigate(R.id.step_to_next)
+//                    false
+//                }.post{}
+//            }.run()
+//        }
+        // fix #5
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.step_to_next)
+            Thread {
+                requireActivity().runOnUiThread {
+                    binding.loader.isVisible = true
+                }
+                Thread.sleep(2000) // important background work !!!
+                requireActivity().runOnUiThread {
+                    binding.loader.isVisible = false
+                }
+                Handler(Looper.getMainLooper()) {
+                    false
+                }.post{
+                    findNavController().navigate(R.id.step_to_next)
+                }
+            }.start()
         }
+        // ------
     }
 
     override fun onDestroyView() {
