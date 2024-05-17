@@ -18,6 +18,7 @@ import com.yandex.mobius360quest.databinding.SomeAnotherCheckFragmentBinding
 import com.yandex.mobius360quest.to_hide.BaseViewBindingFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import java.util.Calendar
@@ -59,6 +60,7 @@ class SomeAnotherCheck : BaseViewBindingFragment<SomeAnotherCheckFragmentBinding
             if (request.selectedItems.count { it == R.raw.i2 } != 1) {
                 return@async false
             }
+            delay(1000L) // Server check takes 1 second
             val answer = Json.decodeFromString<BusWrappedResponse>(getString(R.string.server_answer))
             Log.e("TAG", answer.toString())
             return@async answer.isServerAccessGranted()
