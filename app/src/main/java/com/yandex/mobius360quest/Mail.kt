@@ -10,6 +10,13 @@ import com.yandex.mobius360quest.to_hide.BaseViewBindingFragment
 
 class Mail : BaseViewBindingFragment<EmailFragmentBinding>(EmailFragmentBinding::inflate) {
 
+//    private val emailChecker = RegexEmailChecker(regexProvider = { simpleEmailRegex })
+//    private val simpleEmailRegex = Regex(".+@.+")
+    // fix #4
+    private val simpleEmailRegex = Regex(".+@.+")
+    private val emailChecker = RegexEmailChecker(regexProvider = { simpleEmailRegex })
+    // ------
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.resetPassword.setOnClickListener {
@@ -24,10 +31,8 @@ class Mail : BaseViewBindingFragment<EmailFragmentBinding>(EmailFragmentBinding:
     }
 
     private fun checkEmail(email: String) {
-//        val ok = Regex("""^[\w-\.]+@([\w-]+-\.)+[\w-]{2,4}${'$'}""").matches(email)
-        // fix #4
-        val ok = Regex("""^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}${'$'}""").matches(email)
-        // ------
+        val ok = emailChecker.isEmail(email)
+
         if (ok && AuthServer.checkEmail(email)) {
             findNavController().navigate(R.id.step_to_next)
         } else {
